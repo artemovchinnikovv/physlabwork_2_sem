@@ -38,6 +38,13 @@ def func(x, a, b):
 popt_1, pcov_1 = curve_fit(func, delta_pressure, delta_temp_at_temp_1)
 popt_2, pcov_2 = curve_fit(func, delta_pressure, delta_temp_at_temp_2)
 popt_3, pcov_3 = curve_fit(func, delta_pressure, delta_temp_at_temp_3)
+print (popt_1)
+print (pcov_1)
+print (popt_2)
+print (pcov_2)
+print (popt_3)
+print (pcov_3)
+
 
 #additional
 axes.set_xlabel('delta_pressure, bar')
