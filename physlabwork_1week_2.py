@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 
 #create massives
-x_T = [18, 30, 50]
-y_u = [0.6821608, 0.59879518, 0.53703704]
+x_T = [1/(18+273),1/(30+273), 1/(50+273)]
+y_u = [0.96984925, 0.8626506, 0.75]
 
 #figure
 fig, axes = plt.subplots()
@@ -14,9 +14,9 @@ axes.plot(x_T, y_u, 'red')
 from scipy.optimize import curve_fit
 
 #additional
-axes.set_xlabel('delta_pressure, bar')
-axes.set_ylabel('delta_temp, C^o')
-axes.set_title('delta_temp versus delta_pressure plot');
+axes.set_xlabel('temp_of_thermostat, K')
+axes.set_ylabel('u_JT, K/Pa')
+axes.set_title('u_JT versus temp_of_thermostat plot');
 
 #errorbar
 #axes.errorbar(delta_pressure, delta_temp_at_temp_1, xerr=0.05, yerr=0.019, color='red',ecolor='black')

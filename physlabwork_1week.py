@@ -11,13 +11,13 @@ import matplotlib.pyplot as plt
 
 #create massives
 delta_pressure=delta_pressure[1:6]
-delta_pressure=np.append(delta_pressure, 0) # add (0,0)
+#delta_pressure=np.append(delta_pressure, 0) # add (0,0)
 delta_temp_at_temp_1=delta_temp[1:6]
-delta_temp_at_temp_1=np.append(delta_temp_at_temp_1, 0) # add (0,0) 
+#delta_temp_at_temp_1=np.append(delta_temp_at_temp_1, 0) # add (0,0) 
 delta_temp_at_temp_2=delta_temp[6:11]
-delta_temp_at_temp_2=np.append(delta_temp_at_temp_2, 0) # add (0,0)
+#delta_temp_at_temp_2=np.append(delta_temp_at_temp_2, 0) # add (0,0)
 delta_temp_at_temp_3=delta_temp[11:16]
-delta_temp_at_temp_3=np.append(delta_temp_at_temp_3, 0) # add (0,0)
+#delta_temp_at_temp_3=np.append(delta_temp_at_temp_3, 0) # add (0,0)
 
 #figure
 fig, axes = plt.subplots()
@@ -55,6 +55,9 @@ text_2='y = '+str(round (popt_2[0], 2))+' * x + '+str(round (popt_2[1], 2))
 text_3='y = '+str(round (popt_3[0], 2))+' * x + '+str(round (popt_3[1], 2))
 axes.legend(['temp_of_thermostat = 18 C^o', text_1, 'temp_of_thermostat = 30 C^o', text_2, 'temp_of_thermostat = 50 C^o', text_3])
 
+#grid
+plt.grid()
+
 #fit plots
 axes.plot(delta_pressure, func(delta_pressure, popt_1[0], popt_1[1]), 'r--')
 axes.plot(delta_pressure, func(delta_pressure, popt_2[0], popt_2[1]), 'g--')
@@ -68,6 +71,8 @@ axes.errorbar(delta_pressure, delta_temp_at_temp_3, xerr=0.05, yerr=0.019, color
 #show
 plt.show()
 
+#save
+#plt.savefig('physlabwork_1week_plot_dt_dp_2_1.svg')
 
 #plt.figure()
 
