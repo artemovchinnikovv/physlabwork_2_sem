@@ -1,0 +1,203 @@
+%---------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%------------------------------------------------------------------------------------
+
+
+\documentclass[1 pt]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{pgfplots}
+\usepackage[inkscapeformat=png]{svg}
+\pgfplotsset{compat=1.9}
+
+\begin {document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.3 mm}} % Defines a Hnew command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\Large Московский физико-технический институт }\\[1.5cm] % Name of your university/college
+\textsc{\Large Факультет аэрокосмических технологий}\\[0.5cm] % Major heading such as course name
+\textsc{\large Кафедра общей физики}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Экспериментальное вычисление коэффициентов a и b модели Ван-дер-Ваальса для углекислого газа}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Автор:}\\ Артем \textsc{Овчинников} % Your name
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Преподаватель:} \\
+Арина Владимировна \textsc{Радивон} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+\section{Аннотация}
+\large В данной работе представлено экспериментальное получение коэффициентов a и b углекислого газа модели реального газа Ван-дер-Ваальса, коэффициента Джоуля-Томсона для температур: 18, 30, 50 градусов Цельсия.
+\section{Теоретические сведения}
+Эффектом Джоуля–Томсона называется изменение температуры газа, медленно
+просачивающегося из области высокого в область низкого давления в условиях тепловой изоляции.
+Разность работ при проходе через перегородку(процесс адиабатический):
+\begin{equation}
+    A_1-A_2 = P_{1}V_{1} - P_{2}V_{2} = (U_2+\mu v_{2}/2) - (U_1+\mu v_{1}/2)
+\end{equation}
+Определение энтальпии:
+\begin{equation}
+    H = U + PV
+\end{equation}
+\begin{equation}
+    H_1 - H_2 = \mu (v_{2}/2 - v_{1}/2)
+\end{equation}
+Исходя из малости кинетической энергии относительно тепловой:
+\begin{equation}
+    H_1 \approx H_2
+\end{equation}
+Энтальпия зависит от температуры и давления:
+\begin{equation}
+    \mu_{JT} = \frac{\Delta T}{\Delta P}
+\end{equation}
+Модель реального газа Ван-дер-Ваальса:
+\begin{equation}
+    (P+\frac{a}{V^2})(V-b) = RT
+\end{equation}
+Калорическое уравнение:
+\begin{equation}
+    U = C_V-\frac{a}{V}
+\end{equation}
+Энтальпия через модель реального газа Ван-дер-Ваальса
+\begin{equation}
+    H = U + PV = C_{V}T + RT \frac{V}{V-b} - \frac{2a}{V}
+\end{equation}
+Модель идеального газа для объёма:
+\begin{equation}
+    V \approx \frac{RT}{P}
+\end{equation}
+Малость b:
+\begin{equation}
+    \frac{V}{V-b} \approx 1 + \frac{b}{V}
+\end{equation}
+\begin{equation}
+    H \approx C_{P}T+P(b-\frac{2a}{RT})
+\end{equation}
+Малость изменения температуры:
+\begin{equation}
+    dT/T \ll 1
+\end{equation}
+\begin{equation}
+    dH \approx 0
+\end{equation}
+Финальная формула:
+\begin{equation}
+    \mu_{JT} = - \frac{dT}{|dP|} \approx - \frac{b-\frac{2a}{RT}}{C_P}
+\end{equation}
+\section{Методика измерений}
+\begin{enumerate} 
+  \item Откалибровать напряжение и разность давлений (при нулевой разности давлений - нулевой разности температур может быть ненулевое напряжение).
+  \item Выставить термостат на нужную температуру, дождаться достижения нужной температуры.
+  \item Открыть вентиль, выставить нужное давление.
+  \item Дождаться установления равновесия (разность температур - напряжение не должно меняться).
+  \item Зафиксировать напряжение от разности давления при данной температуре, повторить с другими значениями.
+\end{enumerate}
+\newpage
+\section{Используемое оборудование}
+\begin{center}
+    \includegraphics[scale=0.75]{2_1_6.png}
+\end{center}
+1 - трубка
+2 - пористая перегородка
+3 - труба Дьюара
+4 - уплотнительное кольцо
+5 - змеевик
+6 - балластный баллон
+7 - цифровой вольтметр
+8, 9 - спаи
+10 - пробка из пенопласта
+\newpage
+\section{Результаты измерений и обработка данных}
+\begin{center}
+    \includesvg[]{physlabwork_1week_plot_dt_dp_2_1.svg}
+\end{center}
+\begin{center}
+    \includesvg[]{physlabwork_1week_plot_dt_dp_1_1.svg}
+\end{center}
+\begin{center}
+    \includesvg[]{physlabwork_1week_plot_dt_dp_3.svg}
+\end{center}
+\newpage
+\section{Обсуждение результатов}
+\begin{equation*}
+    a \approx 1 \frac{м^{6}Па}{моль^2}
+\end{equation*}
+\begin{equation*}
+    b \approx 4*10^{-4} \frac{м^3}{моль}
+\end{equation*}
+\begin{equation*}
+    T_{inv}  \approx 500 K
+\end{equation*}
+Для температуры 18 градусов Цельсия:
+\begin{equation*}
+    \mu_{JT} = 0.97 \pm 0.08 \frac{K}{bar}
+\end{equation*}
+Для температуры 30 градусов Цельсия:
+\begin{equation*}
+    \mu_{JT} = 0.86 \pm 0.08 \frac{K}{bar}
+\end{equation*}
+Для температуры 50 градусов Цельсия:
+\begin{equation*}
+    \mu_{JT} = 0.75 \pm 0.06 \frac{K}{bar}
+\end{equation*}
+\begin{equation*}
+    a = 0.3658 \frac{м^{6}Па}{моль^2}
+\end{equation*}
+\begin{equation*}
+    b = 42.9*10^{-6} \frac{м^3}{моль}
+\end{equation*}
+\begin{equation*}
+    T_{inv} \approx 1500 K
+\end{equation*}
+\section{Заключение}
+Данный эксперимент и данная теория недостаточно точные для определения коэффициентов газа Ван-дер-Ваальса. Потеря точности может происходить из-за многих факторов, вот одни из них:
+\begin{enumerate} 
+  \item Газ обмениваеться теплом с трубкой.
+  \item Кинетическая энергия сравнима с тепловой.
+  \item Пренебрежения при выводе формулы энтальпии.
+\end{enumerate}
+\newpage
+\tableofcontents
+\end{document}
