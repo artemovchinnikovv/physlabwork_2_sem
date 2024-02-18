@@ -1,0 +1,145 @@
+%---------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%------------------------------------------------------------------------------------
+
+
+\documentclass[1 pt]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{pgfplots}
+\usepackage[inkscapeformat=png]{svg}
+\pgfplotsset{compat=1.9}
+
+\begin {document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.3 mm}} % Defines a Hnew command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\Large Московский физико-технический институт }\\[1.5cm] % Name of your university/college
+\textsc{\Large Факультет аэрокосмических технологий}\\[0.5cm] % Major heading such as course name
+\textsc{\large Кафедра общей физики}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Экспериментальное определение теплоты испарения спирта }\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Автор:}\\ Артем \textsc{Овчинников} % Your name
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Преподаватель:} \\
+Арина Владимировна \textsc{Радивон} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+\tableofcontents
+\newpage
+\section{Аннотация}
+\large В данной работе представлено экспериментальное определение теплоты испарения спирта косвенным методом, основанным на формуле Клайпейрона-Клаузиуса.
+\section{Теоретические сведения}
+Формула Клапейрона-Клаузиуса:
+\begin{equation}
+    \frac{dP}{dT} = \frac{L}{T(V_2-V_1)}
+\end{equation}
+P - давление насыщенного пара при температуре T, 
+T - абсолютная температура жидкости и пара, 
+L - теплота испарения жидкости, 
+V2 - объем пара, 
+V1 - объем жидкости. \\
+\\
+Малость объема жидкости по сравнению с объемом пара:
+\begin{equation*}
+    V_1 \ll V_2
+\end{equation*}
+\\
+Уравнение Ван-дер-Ваальса:
+\begin{equation}
+    (P+\frac{a}{V^2})(V-b) = RT
+\end{equation}
+\\
+При давлениях ниже атмосферного константами в уравнении Ван-дер-Ваальса можно пренебречь (газ можно рассматривать как идеальный):
+\begin{equation*}
+    P \gg \frac{a}{V^2}
+\end{equation*}
+\begin{equation*}
+    V \gg b
+\end{equation*}
+\begin{equation}
+    V = \frac{RT}{P}
+\end{equation}
+\\
+Подставляя в формулу Клапейрона-Клаузиуса, получаем рабочую формулу:
+\begin{equation}
+    L = -R \frac{d(ln P)}{d(1/T)}
+\end{equation}
+\newpage
+\section{Методика измерений}
+\begin{enumerate} 
+\item Выставить термостат на нужную температуру.
+\item Дождаться установления термодинамического равновесия (1-3 минуты при разнице в 1 градус Цельсия).
+\item Определить и записать температуру по электронному термометру.
+\item Определить и записать давление по ртутному манометру.
+\item Повторить.
+\end{enumerate}
+\section{Используемое оборудование}
+Рисунок используемой экспериментальной установки:
+\begin{center}
+    \includesvg[]{physlabwork_3week_exp_setup}
+\end{center}
+12 - термостат (емкость с водой),
+13 - запаянная капсула,
+14 - спирт,
+15 - ртутный манометр,
+16 - отчетный микроскоп,
+17 - шкала измерений разности высот.
+\newpage
+\section{Результаты измерений и обработка данных}
+ \begin{center}
+     \includesvg[]{physlabwork_3week_plot}
+ \end{center}
+\section{Обсуждение результатов}
+\begin{equation*}
+    L_{exp} = 42087 \pm 19 \frac{Дж}{моль}
+\end{equation*}
+\begin{equation*}
+    L_{known} = 38558 \frac{Дж}{моль}
+\end{equation*}
+\newpage
+\section{Заключение}
+\end{document}
