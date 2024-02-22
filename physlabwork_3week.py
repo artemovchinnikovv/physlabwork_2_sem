@@ -3,9 +3,10 @@ import numpy as np
 
 #read data from ods
 all_data = pd.read_excel('physlabwork_3week.ods')
-
 x_1_div_temp_K = all_data['1/(temperature, K)'].dropna().to_numpy()
 y_ln_delta_pressure_Pa = all_data['LN (delta_pressure, Pa)'].dropna().to_numpy()
+temp_error = all_data['temp_error'].dropna().to_numpy()
+delta_pressure_error = all_data['temp_error'].dropna().to_numpy()
 
 import matplotlib.pyplot as plt
 
@@ -38,7 +39,11 @@ text='least squares fitting line, y = '+str(round (popt[0], 2))+' * x + '+str(ro
 axes.legend(['experimental data (alcohol)', text])
 
 #errorbar
-axes.errorbar(x_1_div_temp_K, y_ln_delta_pressure_Pa, xerr=0, yerr=0, color='red',ecolor='black')
+for i in range (len(x_1_div_temp_K)):
+	temp_error[i] = temp_error[i] * x_1_div_temp_K[i]
+	delta_pressure_error[i] = delta_pressure_error[i] * y_ln_delta_pressure_Pa[i]
+
+axes.errorbar(x_1_div_temp_K, y_ln_delta_pressure_Pa, xerr=temp_error, yerr=delta_pressure_error, color='red',ecolor='black')
 
 #scatter
 axes.scatter(x_1_div_temp_K, y_ln_delta_pressure_Pa, c='red', linewidths=0)
