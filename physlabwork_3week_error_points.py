@@ -18,10 +18,30 @@ axes.plot(x_1_div_temp_K, y_ln_delta_pressure_Pa, 'red')
 
 from scipy.optimize import curve_fit
 
+import random
+#error
+x_add = []
+y_add = []
+for i in range(len(x_1_div_temp_K)):
+        x_0 = x_1_div_temp_K[i]
+        y_0 = y_ln_delta_pressure_Pa[i]
+        for j in range (0,10):
+                x_delta = (random.random()) * temp_error[i] * x_1_div_temp_K[i]
+                y_delta = (random.random()) * delta_pressure_error[i] * y_ln_delta_pressure_Pa[i]
+                if (random.random()<0.5):
+                        x_delta = -(x_delta)
+                if (random.random()<0.5):
+                        y_delta = -(y_delta)
+                x_add.append(x_0+x_delta)
+                y_add.append(y_0+y_delta)
+
+x_add = np.concatenate((x_add, x_1_div_temp_K), axis=None)
+y_add = np.concatenate((y_add, y_ln_delta_pressure_Pa), axis=None)
+
 #fit
 def func(x, a, b):
 	return a*x+b
-popt, pcov = curve_fit(func, x_1_div_temp_K, y_ln_delta_pressure_Pa)
+popt, pcov = curve_fit(func, x_add, y_add)
 print (popt)
 print (pcov)
 
@@ -45,28 +65,11 @@ for i in range (len(x_1_div_temp_K)):
 
 axes.errorbar(x_1_div_temp_K, y_ln_delta_pressure_Pa, xerr=temp_error, yerr=delta_pressure_error, color='red',ecolor='black')
 
-import random
-#error
-x_add = []
-y_add = []
-for i in range(len(x_1_div_temp_K)):
-	x_0 = x_1_div_temp_K[i]
-	y_0 = y_ln_delta_pressure_Pa[i]
-	for j in range (0,10):
-		x_delta = (random.random()) * temp_error[i]
-		y_delta = (random.random()) * delta_pressure_error[i]
-		if (random.random()<0.5):
-			x_delta = -(x_delta)
-		if (random.random()<0.5):
-			y_delta = -(y_delta)
-		x_add.append(x_0+x_delta)
-		y_add.append(y_0+y_delta)
-
-#scatter
-axes.scatter(x_1_div_temp_K, y_ln_delta_pressure_Pa, c='red', linewidths=0)
-
 #scatter_error
 axes.scatter(x_add, y_add, c='black', linewidths=0.25)
+
+#scatter
+axes.scatter(x_1_div_temp_K, y_ln_delta_pressure_Pa, c='red', linewidths=0.25)
 
 #show
 #plt.show()
