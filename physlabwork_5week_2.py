@@ -3,12 +3,26 @@ import numpy as np
 
 #read data from ods
 all_data = pd.read_excel('physlabwork_5week.ods')
-x_data = all_data['delta P (Pa) (lam)'].dropna().to_numpy()
-x_name = "x_delta_press_Pa_turbo"
-x_error = all_data['error delta P (lam)'].dropna().to_numpy()
-y_data = all_data['Q (m3/s) (lam)'].dropna().to_numpy()
-y_name = "y_flow_m3_div_s_turbo"
-y_error = all_data['error Q (lam)'].dropna().to_numpy()
+x_data_1 = all_data['delta P (Pa) (lam)'].dropna().to_numpy()
+x_name_1 = "x_delta_press_Pa_lam"
+x_error_1 = all_data['error delta P (lam)'].dropna().to_numpy()
+y_data_1 = all_data['Q (m3/s) (lam)'].dropna().to_numpy()
+y_name_1 = "y_flow_m3_div_s_lam"
+y_error_1 = all_data['error Q (lam)'].dropna().to_numpy()
+
+x_data_2 = all_data['delta P (Pa) (turbo)'].dropna().to_numpy()
+x_name_2 = "x_delta_press_Pa_turbo"
+x_error_2 = all_data['error delta P (turbo)'].dropna().to_numpy()
+y_data_2 = all_data['Q (m3/s) (turbo)'].dropna().to_numpy()
+y_name_2 = "y_flow_m3_div_s_turbo"
+y_error_2 = all_data['error Q (turbo)'].dropna().to_numpy()
+
+x_data = np.hstack([x_data_1, x_data_2])
+x_name = x_name_1 +" "+ x_name_2
+x_error = np.hstack([x_error_1, x_error_2])
+y_data = np.hstack([y_data_1, y_data_2])
+y_name = y_name_1 +" "+ y_name_2
+y_error = np.hstack([y_error_1, y_error_2])
 
 import matplotlib.pyplot as plt
 
@@ -51,10 +65,10 @@ axes.errorbar(x_data, y_data, xerr=x_error, yerr=y_error, color='red',ecolor='bl
 axes.scatter(x_data, y_data, c='red', linewidths=0)
 
 #show
-plt.show()
+#plt.show()
 
 #save
-#plt.savefig('physlabwork_3week_plot.svg')
+plt.savefig('physlabwork_5week_plot_2.svg')
 
 #plt.figure()
 
