@@ -88,7 +88,14 @@
 \end{equation}
 - формула объемного расхода для турбулентного потока
 \section{Методика измерений}
-
+\begin{enumerate}
+    \item Подсоединить манометр к двум выходам.
+    \item Включить компрессор.
+    \item Включить манометр (повернуть флажок в рабочее состояние).
+    \item Создать поток воздуха.
+    \item Измерить объемный расход по газовому счетчику и разность давлений по манометру.
+    \item Повторить.
+\end{enumerate}
 \section{Используемое оборудование}
 \begin{center}
     \includegraphics[scale=0.3]{physlabwork_5week_setup.png}
@@ -97,13 +104,16 @@
 \newpage
 \section{Результаты измерений и обработка данных}
 \begin{center}
-    \includesvg[]{physlabwork_5week_plot}
+    \includesvg[]{physlabwork_5week_plot_lam}
 \end{center}
 \begin{center}
-    \includesvg[]{physlabwork_5week_plot_3}
+    \includesvg[]{physlabwork_5week_plot_lam|turbo}
 \end{center}
 \begin{center}
-    \includesvg[]{physlabwork_5week_plot_2}
+    \includesvg[]{physlabwork_5week_plot_turbo}
+\end{center}
+\begin{center}
+    \includesvg[]{physlabwork_5week_plot_lam&turbo}
 \end{center}
 \begin{center}
     \includesvg[]{physlabwork_5week_plot_4}
@@ -112,5 +122,12 @@
     \includesvg[]{physlabwork_5week_plot_5}
 \end{center}
 \section{Обсуждение результатов}
+\begin{equation*}
+    \eta_{exp} = (2.08 \pm 0.16) \cdot 10^{-5} Pa \cdot s
+\end{equation*}
+\begin{equation*}
+    \eta_{known} = 1.78 \cdot 10^{-5} Pa \cdot s
+\end{equation*}
 \section{Заключение}
+В данном эксперименте формула Пуазейля позволяет получить вязкость воздуха до первой значащей цифры, однако для более точных измерений она неприменима (по краней мере, в данном эксперименте с моей чистотой эксперимента).
 \end{document}
