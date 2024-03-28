@@ -1,8 +1,12 @@
 import pandas as pd
 import numpy as np
 
+show = 0
+save = 1
+
 #read data from ods
-name = "physlabwork_6week_37"
+num = 196
+name = "physlabwork_6week_"+str(num)
 all_data = pd.read_excel(name+".ods")
 x_data = all_data["t (s)"].dropna().to_numpy()
 x_name = "time, s"
@@ -38,6 +42,7 @@ y_error = []
 #y_error = y_error[:]
 
 import matplotlib.pyplot as plt
+plt.rcParams ['figure.figsize'] = [8, 6]
 
 #figure
 fig, axes = plt.subplots()
@@ -88,13 +93,19 @@ plt.grid()
 axes.plot(x_data, func(x_data, popt[0], popt[1]), 'b--')
 
 import math
+error_a = (float(pcov[0][0]))**(1/2)
+error_b = (float(pcov[1][1]))**(1/2)
+error_t = (error_a)/((float (popt[0]))**2)
+error_t = round (error_t, 2)
+error_a = round (error_a, 8)
+error_b = round (error_b, 5)
 #additional
 axes.set_xlabel(x_name)
 axes.set_ylabel(y_name)
 t=round((1/popt[0]), 2)
-axes.set_title("pressure = 37 torr, ch.time = "+str(t)+" s")
-text='least squares fitting line, y = ('+str(round (popt[0], 5))+" +- sqrt("+str(round (pcov[0][0], 4))+')) * x + ('+str(round (popt[1], 5))+" +- sqrt("+str(round (pcov[1][1], 4))+'))'
-axes.legend(['experimental data', text])
+axes.set_title("pressure = "+str(num)+" torr, ch.time = ("+str(t)+" +- "+str(error_t)+") s")
+text='l.sq.fit.line, y = ('+str(round (popt[0], 4))+" +- "+str(error_a)+') * x + ('+str(round (popt[1], 4))+" +- "+str(error_b)+')'
+axes.legend(['exp.data', text])
 
 #axes.errorbar(x_data, y_data, xerr=x_error, yerr=y_error, color='red',ecolor='black')
 
@@ -102,10 +113,12 @@ axes.legend(['experimental data', text])
 axes.scatter(x_data, y_data, c='red', linewidths=0)
 
 #show
-#plt.show()
+if show:
+	plt.show()
 
 #save
-plt.savefig(name+""+".svg")
+if save:
+	plt.savefig(name+""+".svg")
 
 #plt.figure()
 
