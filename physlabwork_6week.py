@@ -1,20 +1,21 @@
 import pandas as pd
 import numpy as np
 
-show = 0
-save = 1
+show = 1
+save = 0
 
 #read data from ods
-num = 196
-name = "physlabwork_6week_"+str(num)
+num = 0
+name = "physlabwork_6week"
+#"physlabwork_6week_"+str(num)
 all_data = pd.read_excel(name+".ods")
-x_data = all_data["t (s)"].dropna().to_numpy()
-x_name = "time, s"
-x_error = []
+x_data = all_data["1/p, 1/Pa"].dropna().to_numpy()
+x_name = "1/pressure, 1/Pa"
+x_error = all_data["error 1/p, 1/Pa"].dropna().to_numpy()
 #all_data[""].dropna().to_numpy()
-y_data = all_data["-ln (V/V_0)"].dropna().to_numpy()
-y_name = "-ln(voltage/voltage_0)"
-y_error = []
+y_data = all_data["D, m2/s"].dropna().to_numpy()
+y_name = "interdiff.coeff., m2/s"
+y_error = [0, 0, 0, 0, 0]
 #all_data[""].dropna().to_numpy()
 
 #x_data_2 = all_data['delta P (Pa) (turbo)'].dropna().to_numpy()
@@ -53,7 +54,7 @@ axes.plot(x_data, y_data, 'red')
 from scipy.optimize import curve_fit
 
 #errorbar
-for i in range (len(x_error)):
+for i in range (0):
         x_error[i] = x_error[i] * x_data[i]
         y_error[i] = y_error[i] * y_data[i]
 
@@ -83,8 +84,6 @@ calc_y_error = np.hstack([y_data, calc_y_error])
 def func(x, a, b):
 	return a*x+b
 popt, pcov = curve_fit(func, calc_x_error, calc_y_error)
-print (popt)
-print (pcov)
 
 #grid
 plt.grid()
@@ -95,19 +94,20 @@ axes.plot(x_data, func(x_data, popt[0], popt[1]), 'b--')
 import math
 error_a = (float(pcov[0][0]))**(1/2)
 error_b = (float(pcov[1][1]))**(1/2)
-error_t = (error_a)/((float (popt[0]))**2)
-error_t = round (error_t, 2)
-error_a = round (error_a, 8)
-error_b = round (error_b, 5)
+
+error_a = round (error_a, 3)
+error_b = round (error_b, 7)
+
+D = (popt[0])*(1/101325) + popt[1]
+D = round (D, 7)
 #additional
 axes.set_xlabel(x_name)
 axes.set_ylabel(y_name)
-t=round((1/popt[0]), 2)
-axes.set_title("pressure = "+str(num)+" torr, ch.time = ("+str(t)+" +- "+str(error_t)+") s")
-text='l.sq.fit.line, y = ('+str(round (popt[0], 4))+" +- "+str(error_a)+') * x + ('+str(round (popt[1], 4))+" +- "+str(error_b)+')'
+axes.set_title("D = "+str(D)+" m2/s")
+text='l.sq.fit.line, y = ('+str(round (popt[0], 3))+" +- "+str(error_a)+') * x + ('+str(round (popt[1], 7))+" +- "+str(error_b)+')'
 axes.legend(['exp.data', text])
 
-#axes.errorbar(x_data, y_data, xerr=x_error, yerr=y_error, color='red',ecolor='black')
+axes.errorbar(x_data, y_data, xerr=x_error, yerr=y_error, color='red',ecolor='black')
 
 #scatter
 axes.scatter(x_data, y_data, c='red', linewidths=0)
