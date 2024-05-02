@@ -1,25 +1,26 @@
 import pandas as pd
 import numpy as np
 
-i=4
-show = 1
-save = 0
+q=7
+w=0
+show = 0
+save = 1
 
 #read data from ods
 num = 0
 name = "physlabwork_11week_1"
 #"physlabwork_6week_"+str(num)
 all_data = pd.read_excel(name+".ods")
-x_data = all_data["mA"+str(i)].dropna().to_numpy()
+x_data = all_data["mA"+str(q)].dropna().to_numpy()
 x_name = "amperage, mA"
-x_error = all_data["emA"+str(i)].dropna().to_numpy()
+x_error = all_data["emA"+str(q)].dropna().to_numpy()
 #all_data[""].dropna().to_numpy()
-y_data = all_data["mV"+str(i)].dropna().to_numpy()
+y_data = all_data["mV"+str(q)].dropna().to_numpy()
 y_name = "voltage, mV"
-y_error = all_data["emV"+str(i)].dropna().to_numpy()
+y_error = all_data["emV"+str(q)].dropna().to_numpy()
 #all_data[""].dropna().to_numpy()
 
-c_data = all_data["C"+str(i)].dropna().to_numpy()
+c_data = all_data["C"+str(q)].dropna().to_numpy()
 T = c_data[0]
 
 #x_data_2 = all_data['delta P (Pa) (turbo)'].dropna().to_numpy()
@@ -62,7 +63,7 @@ import random
 calc_x_error = []
 calc_y_error = []
 for i in range(len(x_data)):
-        for j in range(10):
+        for j in range(w):
                 x=0
                 y=0
                 if (random.random()>0.5):
@@ -78,7 +79,7 @@ for i in range(len(x_data)):
 
 calc_x_error = np.hstack([x_data, calc_x_error])
 calc_y_error = np.hstack([y_data, calc_y_error])
-axes.scatter(calc_x_error, calc_y_error, c='black', linewidths=0.25)
+axes.scatter(calc_x_error, calc_y_error, c='black', linewidths=-3.25)
 
 #fit
 def func(x, a, b):
@@ -116,7 +117,7 @@ if show:
 
 #save
 if save:
-	plt.savefig("physlabwork_11week"+"_"+str(i)+".svg")
+	plt.savefig("physlabwork_11week"+"_"+str(q)+".svg")
 
 #plt.figure()
 
