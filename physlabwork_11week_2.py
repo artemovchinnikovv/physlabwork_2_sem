@@ -101,7 +101,7 @@ error_b = round (error_b, 7)
 #additional
 axes.set_xlabel(x_name)
 axes.set_ylabel(y_name)
-axes.set_title("T = "+str(T)+" C")
+axes.set_title("T = "+str(T)+" K")
 #text="l.sq.fit.line, y = " + str(round (popt[0], 3))+ " * x " + str(round (popt[1], 7))
 text='l.sq.fit.line, y = ('+str(round (popt[0], 3))+" +- "+str(error_a)+') * x + ('+str(round (popt[1], 7))+" +- "+str(error_b)+')'
 axes.legend(['exp.data', text])
@@ -117,7 +117,7 @@ if show:
 
 #save
 if save:
-	plt.savefig("physlabwork_11week"+"_"+str(q)+".svg")
+	plt.savefig("physlabwork_11week"+"_"+str(q)+"n"+".svg")
 
 #plt.figure()
 
