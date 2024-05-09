@@ -17,6 +17,7 @@
 \DeclareFloatSeparators{mysep}{\hspace{1cm}}
 
 % Ссылки?
+\usepackage[unicode, pdftex]{hyperref} % подключаем hyperref
 \usepackage{hyperref}
 \usepackage[rgb]{xcolor}
 \hypersetup{				% Гиперссылки
@@ -130,7 +131,7 @@
 \section{Используемое оборудование}
 На оси полой цилиндрической трубки размещена металлическая нить. Полость трубки заполнена воздухом (полость через небольшое отверстие сообщается с атмосферой). Стенки трубки помещены в кожух, через которых пропускается вода из термостата, так что их температура поддерживается постоянной. Для предотвращения конвекции трубка расположена вертикально.
 
-\thisfloatsetup{floatrowsep=mysep}	
+\thisfloatsetup{floatrowsep=mysep}
 \begin{figure}[h!]
 \begin{floatrow}
  \ffigbox[\FBwidth]{\caption{схема установки}\label{fig:Graph_5}}%
@@ -138,8 +139,22 @@
 \end{floatrow}
 \end{figure}
 
+\newpage
+\section{Результаты измерений и обработка данных}
+\hypertarget{p4}{Первым делом} обработаны собственные данные. На странице \hyperlink{p5}{5} вы можете видеть графики напряжения от силы тока, по которым мы определяем корректность полученных данных (зависимость должна быть линейной). \\
+Далее на странице \hyperlink{p6}{6} обработаны данные сопротивления от мощности, и тут видно, что график хаотичный (из-за шага изменения силы тока). Сделан вывод, что самостоятельно полученные данные непригодны для обработки. \\
+Взяты данные преподавателя. \\
+На странице \hyperlink{p7}{7} вы можете видеть графики напряжения от силы тока, по которым мы определяем корректность полученных данных (зависимость должна быть линейной). \\
+Далее на странице \hyperlink{p8}{8} обработаны данные сопротивления от мощности. \\
+В заключение построен \hyperlink{p91}{график} зависимости сопротивления от температуры, \hyperlink{p92}{график} зависимости коэффициента теплопроводности от температуры, \hyperlink{p93}{график} зависимости логарифма теплопроводности от логарифма температуры.
+
 \newgeometry{bottom=2cm, left=1cm, right=1cm, top=1.5cm}	
-\thisfloatsetup{floatrowsep=mysep}	
+\thisfloatsetup{floatrowsep=mysep}
+
+\hypertarget{p5}{\hyperlink{p4}{Зависимость напряжения от силы тока}} 
+% создаём мишень p1
+% ссылаемся на мишень p1
+
 \begin{figure}[h!]
 \begin{floatrow}
  \ffigbox[\FBwidth]{\caption{мои данные}\label{fig:Graph_1}}%
@@ -172,6 +187,11 @@
 
 \newgeometry{bottom=2cm, left=1cm, right=1cm, top=1.5cm}	
 \thisfloatsetup{floatrowsep=mysep}	
+
+\hypertarget{p6}{\hyperlink{p4}{Зависимость сопротивления от мощности}} 
+% создаём мишень p1
+% ссылаемся на мишень p1
+
 \begin{figure}[h!]
 \begin{floatrow}
  \ffigbox[\FBwidth]{\caption{мои данные}\label{fig:Graph_1}}%
@@ -204,6 +224,11 @@
 
 \newgeometry{bottom=2cm, left=1cm, right=1cm, top=1.5cm}	
 \thisfloatsetup{floatrowsep=mysep}	
+
+\hypertarget{p7}{\hyperlink{p4}{Зависимость напряжения от силы тока}} 
+% создаём мишень p1
+% ссылаемся на мишень p1
+
 \begin{figure}[h!]
 \begin{floatrow}
  \ffigbox[\FBwidth]{\caption{не мои данные}\label{fig:Graph_1}}%
@@ -234,6 +259,11 @@
 
 \newgeometry{bottom=2cm, left=1cm, right=1cm, top=1.5cm}	
 \thisfloatsetup{floatrowsep=mysep}	
+
+\hypertarget{p8}{\hyperlink{p4}{Зависимость сопротивления от мощности}} 
+% создаём мишень p1
+% ссылаемся на мишень p1
+
 \begin{figure}[h!]
 \begin{floatrow}
  \ffigbox[\FBwidth]{\caption{не мои данные}\label{fig:Graph_1}}%
@@ -262,33 +292,37 @@
 \end{figure}
 \restoregeometry
 
+\hypertarget{p91}{}
 \thisfloatsetup{floatrowsep=mysep}	
 \begin{figure}[h!]
 \begin{floatrow}
- \ffigbox[\FBwidth]{\caption{}\label{fig:Graph_5}}%
+ \ffigbox[\FBwidth]{\caption{{\hyperlink{p4}{зависимость сопротивления от температуры}}}\label{fig:Graph_5}}%
          {\includegraphics[width=12cm,height=10.5cm]{physlabwork_11week_7RT.png}}     
 \end{floatrow}
 \end{figure}
 
+\hypertarget{p92}{}
 \thisfloatsetup{floatrowsep=mysep}	
 \begin{figure}[h!]
 \begin{floatrow}
- \ffigbox[\FBwidth]{\caption{}\label{fig:Graph_5}}%
+ \ffigbox[\FBwidth]{\caption{{\hyperlink{p4}{зависимость коэффициента теплопроводности от температуры}}}\label{fig:Graph_5}}%
          {\includegraphics[width=12cm,height=10.5cm]{physlabwork_11week_8kT.png}}     
 \end{floatrow}
 \end{figure}
 
+\hypertarget{p93}{}
 \thisfloatsetup{floatrowsep=mysep}	
 \begin{figure}[h!]
 \begin{floatrow}
- \ffigbox[\FBwidth]{\caption{}\label{fig:Graph_5}}%
+ \ffigbox[\FBwidth]{\caption{{{зависимость логарифма теплопроводности от логарифма температуры}}}\label{fig:Graph_5}}%
          {\includegraphics[width=12cm,height=10.5cm]{physlabwork_11week_9logklogT.png}}     
 \end{floatrow}
 \end{figure}
 
 \section{Обсуждение результатов}
+Получены теплопроводности воздуха в зависимости от температуры, представленные в таблице:
 \begin{table}[H]
-\caption{}
+\caption{зависимость теплопроводности от температуры}
 \label{tabular:timesandtenses}
 \begin{center}
 \begin{tabular}{ccc}
@@ -301,12 +335,18 @@ T, K & k, W/(K*m) & error, W/(K*m)\\
 \end{tabular}
 \end{center}
 \end{table}
-\section{Заключение}
+\begin{equation*}
+    k_{known} = 0,022 \frac{W}{K \cdot m}
+\end{equation*}
 
+\newpage
+\section{Заключение}
+Теплопроводность воздуха, полученная экспериментально, отличается от табличной в два раза. Это говорит о несовершенности эксперимента и приближений в теории.
+Предполагаемые причины: конвекция, нестационарное состояние при снятии показаний, зависимость коэффициента теплопроводности от других параметров (давление, влажность, ...), несовершенство метода (зависимость от материала оболочки, ...).
 \thisfloatsetup{floatrowsep=mysep}	
 \begin{figure}[h!]
 \begin{floatrow}
- \ffigbox[\FBwidth]{\caption{}\label{fig:Graph_5}}%
+ \ffigbox[\FBwidth]{\caption{смешная картинка, чтобы не грустить от результата, далекого от табличного}\label{fig:Graph_5}}%
          {\includegraphics[width=6cm,height=4.5cm]{lgh.png}}     
 \end{floatrow}
 \end{figure}
